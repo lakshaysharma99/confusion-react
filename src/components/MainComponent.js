@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand } from 'reactstrap';
 import Menu from './MenuComponent'; 
 import DishDetail from './DishdetailComponent';
+import Header from './HeaderComponent';
+import Footer from './FooterComponent';
 import { DISHES } from '../shared/dishes';
 
 class Main extends Component{
@@ -24,14 +25,7 @@ class Main extends Component{
   render(){
     return (
       <div>
-        <Navbar dark color="primary">
-          <div className="container">
-            <NavbarBrand href="/">
-              Ristorante Con Fusion
-            </NavbarBrand>
-          </div>
-        </Navbar>
-        {/* dishes is now made available as props */}
+        <Header />
         <Menu dishes={this.state.dishes} 
             onClick={(dishId) => this.onDishSelect(dishId)} />
             {/* the filter fuction returns a subarray so we need to use [0] here
@@ -39,6 +33,7 @@ class Main extends Component{
                 it in the form of a subarray*/}
         <DishDetail 
             dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]} />
+            <Footer />
       </div>
     );
   }
