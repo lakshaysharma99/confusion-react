@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Main from './components/MainComponent';
 import './App.css';
 // import { DISHES } from './shared/dishes';
+import { BrowserRouter } from 'react-router-dom';
 
 class App extends Component{
 
@@ -19,18 +20,11 @@ class App extends Component{
 
   render(){
     return (
-      <div>
-        {/* NAVBAR HAS BEEN MOVE TO THE MainComponent SO NO LONGER REQD HERE */}
-        {/* <Navbar dark color="primary">
-          <div className="container">
-            <NavbarBrand href="/">
-              Ristorante Con Fusion
-            </NavbarBrand>
-          </div>
-        </Navbar> */}
-        {/* dishes is now made available as props */}
-        <Main />
-      </div>
+      <BrowserRouter>
+        <div>
+          <Main />
+        </div>
+      </BrowserRouter>
     );
   }
 }
