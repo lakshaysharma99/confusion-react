@@ -29,7 +29,7 @@ const minLength = (len) => val => (val) && (val.length >= len);
             );
     }
 
-    function RenderComments({comments, addComment, dishId}) {
+    function RenderComments({comments, postComment, dishId}) {
         console.log(comments)
         if(comments != null){
             return(
@@ -45,7 +45,7 @@ const minLength = (len) => val => (val) && (val.length >= len);
                             );
                         })}
                     </ul>
-                    <CommentForm addComment={addComment} dishId={dishId} />
+                    <CommentForm postComment={postComment} dishId={dishId} />
                 </div>
         );
         }
@@ -96,7 +96,7 @@ const minLength = (len) => val => (val) && (val.length >= len);
                         <RenderDish dish={props.dish} />
                     
                         <RenderComments comments={props.comments}
-                            addComment={props.addComment}
+                            postComment={props.postComment}
                             dishId={props.dish.id} />
                     
                 </div>
@@ -129,7 +129,7 @@ class CommentForm extends Component{
 
     handleSubmit(values) {
         this.toggleModal();
-        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+        this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
        
     }
 
@@ -170,6 +170,7 @@ class CommentForm extends Component{
                                         <Control.select model='.rating' name='rating' id="rating"
                                             className="form-control"
                                             placeholder="Rating" >
+                                                <option hidden>--Select a rating--</option>
                                                 <option>5</option>
                                                 <option>4</option>
                                                 <option>3</option>
